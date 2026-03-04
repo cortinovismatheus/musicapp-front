@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musicapp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div> <img src="assets/logo.png" alt="logo"> </div>
+            <div class="header-title"> 
+                <h1> Musicapp </h1>
+                <p> gerencie seu catálogo de instrumentos </p>
+            </div>
+            <div> 
+                <button> Adicionar Instrumento </button>           
+            </div>
+        </div>
+        <div class="filters">
+            <div class="input-search">
+                <svg 
+                class="icone"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20" 
+                height="20" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round" 
+                stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+                <input type="text" placeholder="Buscar instrumento..."> 
+            </div>
+            <div class="filters-categories"> 
+                <p class="filters-categories-title">Categorias:</p>
+                <div class="filters-categories-buttons"> 
+                    <button class="button-todos">Todos</button>
+                    <button class="button-cordas">Cordas</button>
+                    <button class="button-sopros">Sopros</button>
+                    <button class="button-percussão">Percussão</button>
+                </div>
+            </div>
+        </div>
+        <div class="lista-instrumentos">
+            <table width="100%">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th width="100px">Categoria</th>
+                        <th>Pecas</th>
+                        <th>Valor</th>
+                        <th width="120px">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Violão</td>
+                        <td class="style-category"> <span class="style-cordas"> Cordas </span> </td>
+                        <td>6</td>
+                        <td>R$ 800,00</td>
+                        <td class="actions-buttons">
+                            <button class="button-editar">
+                                <svg class="icon-editar"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+                              </svg>
+                            </button>
+                            <button class="button-excluir">
+                                <svg class="icon-trash" viewBox="0 0 24 24">
+                                    <path d="M3 6h18M8 6V4h8v2m-9 0l1 14h10l1-14"
+                                          stroke="currentColor"
+                                          stroke-width="2"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          fill="none"/>
+                                    </svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Flauta</td>
+                        <td class="style-category"> <span class="style-sopros"> Sopros </span> </td>
+                        <td>3</td>
+                        <td>R$ 350,00</td>
+                        <td class="actions-buttons">
+                            <button class="button-editar">
+                                <svg class="icon-editar"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+                                </svg>
+                            </button>
+                            <button class="button-excluir">
+                                <svg class="icon-trash" viewBox="0 0 24 24">
+                                    <path d="M3 6h18M8 6V4h8v2m-9 0l1 14h10l1-14"
+                                          stroke="currentColor"
+                                          stroke-width="2"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          fill="none"/>
+                                    </svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Bateria</td>
+                        <td class="style-category"> <span class="style-percussão"> Percussão </span> </td>
+                        <td>7</td>
+                        <td>R$ 2500,00</td>
+                        <td class="actions-buttons">
+                            <button class="button-editar">
+                                <svg class="icon-editar"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+                            </svg>
+                            </button>
+                            <button class="button-excluir">
+                                <svg class="icon-trash" viewBox="0 0 24 24">
+                                    <path d="M3 6h18M8 6V4h8v2m-9 0l1 14h10l1-14"
+                                          stroke="currentColor"
+                                          stroke-width="2"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          fill="none"/>
+                                    </svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Trompete</td>
+                        <td class="style-category"> <span class="style-sopros"> Sopros </span> </td>
+                        <td>4</td>
+                        <td>R$ 1200,00</td>
+                        <td class="actions-buttons">
+                            <button class="button-editar">
+                                <svg class="icon-editar"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+                                </svg>
+                            </button>
+                            <button class="button-excluir">  
+                                <svg class="icon-trash" viewBox="0 0 24 24">
+                                <path d="M3 6h18M8 6V4h8v2m-9 0l1 14h10l1-14"
+                                      stroke="currentColor"
+                                      stroke-width="2"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      fill="none"/>
+                                </svg>
+                              
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Violino</td>
+                        <td class="style-category"> <span class="style-cordas"> Cordas </span> </td>
+                        <td>5</td>
+                        <td>R$ 950,00</td>
+                        <td class="actions-buttons">
+                            <button class="button-editar">
+                                <svg class="icon-editar"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+                                </svg>
+                            </button>
+                            <button class="button-excluir">
+                                <svg class="icon-trash" viewBox="0 0 24 24">
+                                    <path d="M3 6h18M8 6V4h8v2m-9 0l1 14h10l1-14"
+                                          stroke="currentColor"
+                                          stroke-width="2"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          fill="none"/>
+                                    </svg>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination">
+            <div class="total-instrumentos"> <p>Total: 5 instrumentos</p></div>
+            <div class="pagination-buttons">
+                <button class="button-pagina-anterior"><</button>
+                <button class="button-pagina-1">1</button>
+                <button class="button-pagina-2">2</button>
+                <button class="button-pagina-3">3</button>
+                <button class="button-pagina-proxima">></button>
+            </div>
+            <div class="itens-por-pagina">
+                <p class="itens-por-pagina-title">Itens por página: </p>
+                <select name="itens-por-paginas">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="2">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    
+                </select>
+            </div>
+        </div>
+
+
+            
+    
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,309 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+.container {
+  width: 800px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.header img {
+  width: 90px;
+}
+
+.header .header-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header .header-title h1 {
+  color: #0F52BA;
+}
+
+.header .header-title p {
+  color: rgb(121, 112, 112);
+}
+
+.header button{
+  padding: 10px 20px;
+  border-radius: 5px;
+  border:#313131 1px solid;
+  background: #1e68d6;
+  background: linear-gradient(90deg,rgba(30, 104, 214, 1) 0%, rgba(160, 190, 235, 1) 100%);
+  color: #ffffff;
+  -webkit-box-shadow: 3px 3px 5px 3px rgba(80, 80, 80, 0.3);
+  box-shadow: 3px 3px 5px 3px rgba(80, 80, 80, 0.3);
+}
+
+
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px; 
+ 
+}
+
+.filters-categories {
+  display: flex;
+}
+
+.filters-categories-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 5px;
+  margin-top: 5.5px;
+
+}
+
+.filters-categories-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+input{
+  height: 40px;
+  width: 350px;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.input-search{
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.input-search input {
+  width: 100%;
+  padding: 12px 12px 12px 40px; /* espaço para a lupa */
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.input-search .icone {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af; /* cinza suave */
+  pointer-events: none; /* não bloqueia clique no input */
+}
+  
+.filters button{
+  border-radius: 10px;
+  font-size: 15px;
+  padding: 5px;
+  -webkit-box-shadow: 3px 3px 5px 2px rgba(80, 80, 80, 0.3);
+  box-shadow: 3px 3px 5px 2px rgba(80, 80, 80, 0.3);
+}
+
+.filters .button-todos{
+  background-color: rgba(0, 0, 255, 0.1);
+  border-color: #0000ff;
+}
+
+.filters .button-cordas{
+  background-color: rgba(255, 123, 0, 0.1);
+  border-color: #ff8800;
+}
+
+.filters .button-sopros{
+  background-color: rgba(70, 224, 70, 0.1);
+  border-color: #3fdf3f;
+}
+
+.filters .button-percussão{
+  background-color: rgba(255, 0, 0, 0.1);
+  border-color: #ff0000;
+}
+
+.lista-instrumentos {
+  margin-top: 20px;
+  border: 2px solid #d1d5db;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table thead th{
+  background-color: #757373;
+  color: #ffffff;
+  padding: 5px 10px;
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+table tbody td{
+  background-color: #f0f0f0;
+  padding: 5px 10px; 
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+.style-category span{
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 3px 8px;
+  height: 30px;
+}
+
+.style-category .style-cordas{
+  background-color: rgba(255, 123, 0, 0.1);
+  border-color: #ff8800;
+}
+
+.style-category .style-sopros{
+  background-color: rgba(70, 224, 70, 0.1);
+  border-color: #3fdf3f;
+}
+
+.style-category .style-percussão{
+  background-color: rgba(255, 0, 0, 0.1);
+  border-color: #ff0000;
+}
+
+table .actions-buttons{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+table .actions-buttons button{
+  padding: 5px 5px;
+  border-radius: 10px;
+  color: #ffffff;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+}
+
+table .button-editar{
+  background-color: rgb(2, 98, 253);
+}
+
+table .button-excluir{
+  background-color: red;
+}
+
+table .icon-trash{
+  width: 20px;
+  height: 100%;
+}
+
+table td, th{
+  border-bottom: 2px solid #e5e7eb;
+  border-right: 2px solid #e5e7eb;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pagination .total-instrumentos{
+  font-size: 16px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.pagination .pagination-buttons {
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 5px 5px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.pagination .button-pagina-anterior, .button-pagina-proxima{
+  border: 1.5px solid #000000;
+  padding: 5px 5px;
+  border-radius: 10px;
+  font-size: 20px;
+  height: 35px;
+  width: 40px;
+  background-color: #ffffff;
+}
+
+.pagination .button-pagina-1{
+  border: 1.5px solid rgba(30, 104, 214, 1);
+  color: #ffffff;
+  padding: 5px 5px;
+  border-radius: 10px;
+  font-size: 20px;
+  height: 35px;
+  width: 40px;
+  background: #1e68d6;
+  background: linear-gradient(90deg,rgba(30, 104, 214, 1) 0%, rgba(160, 190, 235, 1) 100%);
+}
+
+.pagination .button-pagina-2{
+  border: 1.5px solid #000000;
+  padding: 5px 5px;
+  border-radius: 10px;
+  font-size: 20px;
+  height: 35px;
+  width: 40px;
+  background-color: #ffffff;
+}
+
+.pagination .button-pagina-3{
+  border: 1.5px solid #000000;
+  padding: 5px 5px;
+  border-radius: 10px;
+  font-size: 20px;
+  height: 35px;
+  width: 40px;
+  background-color: #ffffff;
+}
+
+.pagination .itens-por-pagina{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pagination .itens-por-pagina-title{
+  font-size: 16px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.pagination select{
+  height: 30px;
+  width: 40px;
+  padding: 5px 5px;
+  border-radius: 10px;
+}
+
