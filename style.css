@@ -51,6 +51,7 @@ body {
   color: #ffffff;
   -webkit-box-shadow: 3px 3px 5px 3px rgba(80, 80, 80, 0.3);
   box-shadow: 3px 3px 5px 3px rgba(80, 80, 80, 0.3);
+  cursor: pointer;
 }
 
 
@@ -59,7 +60,6 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-top: 30px; 
- 
 }
 
 .filters-categories {
@@ -115,6 +115,7 @@ input{
   padding: 5px;
   -webkit-box-shadow: 3px 3px 5px 2px rgba(80, 80, 80, 0.3);
   box-shadow: 3px 3px 5px 2px rgba(80, 80, 80, 0.3);
+  cursor:pointer
 }
 
 .filters .button-todos{
@@ -307,3 +308,85 @@ table td, th{
   border-radius: 10px;
 }
 
+.modal{
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%; 
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 9;
+  display:none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  padding:50px;
+  gap:20px;
+  border-radius:20px;
+}
+
+.modal-content h2{
+  color: #0F52BA;
+}
+
+.modal-content select {
+  height: 40px;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  color: #6b7280;
+  padding: 10px 35px 10px 10px;
+  /* remove seta padrão */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  /* adiciona seta */
+  background-image: url("https://cdn-icons-png.flaticon.com/512/32/32195.png");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+}
+
+.modal-content input{
+  height: 40px;
+  width: 100%;
+  padding: 5px 5px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  padding:10px;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #1e68d6;
+  box-shadow: 0 0 5px rgba(30, 104, 214, 0.5);
+}
+
+.modal-content button{
+  display: flex;
+  padding:10px;
+  width: 100%;
+  border:1px solid #d1d5db;
+  border-radius:10px;
+  background-color: #1e68d6;
+  color: #ffffff;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+}
+
+.close{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  color: #ffffff;
+  cursor: pointer;
+}
