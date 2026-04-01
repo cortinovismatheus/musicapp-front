@@ -8,16 +8,6 @@
 </head>
 <body>
     <div class="container">
-        <div class="form-instruments" style="display: none;">
-            <input id="name" placeholder="Nome">
-            <select id="category">
-                <option value="cordas">Cordas</option>
-                <option value="sopros">Sopros</option>
-                <option value="percussão">Percussão</option>
-            </select>
-            <input id="quantity_piece" placeholder="Peças">
-            <input id="price" placeholder="Preço">
-        </div>
         <div class="header">
             <div> <img src="assets/logo.png" alt="logo"> </div>
             <div class="header-title"> 
@@ -33,7 +23,7 @@
             <div class="modal-content">
                 <span onclick="closeForm()" class="close">&times;</span>
                 <h2>Adicionar Instrumento</h2>
-                <input type="text" id="name" placeholder="Nome">
+                <input type="text" id="name" placeholder="Nome" value="">
                 <select id="category">
                     <option value="">Selecione uma categoria</option>
                     <option value="cordas">Cordas</option>

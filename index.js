@@ -3,11 +3,13 @@ async function main() {
     const response = await axios.get('http://localhost:3000/');
     const instruments = response.data;
 
+  
+
     const table = document.getElementById('tabela-instrumentos');
 
     console.log(instruments);
     
-     table.innerHTML = "";
+    table.innerHTML = "";
 
     instruments.forEach(instrument => {
       const row = 
@@ -58,12 +60,33 @@ async function createInstruments(id) {
   const quantity_piece = document.getElementById('quantity_piece').value;
   const price = document.getElementById('price').value;
   
+  
   const newInstrument = {
     name: name,
     category: category,
     quantity_piece: quantity_piece,
     price: price
   };
+
+  if(name == undefined || name.trim() == '' ){
+    alert('Preencha o campo "nome"')
+    return
+  }
+  
+  if(category === ''){
+    alert('Preencha o campo "categoria"')
+    return
+  }
+
+  if(quantity_piece === ''){
+    alert('Preencha o campo "Peças"')
+    return
+  }
+
+  if(price === ''){
+    alert('Preencha o campo "preço"')
+    return
+  }
 
   try{
     await axios.post('http://localhost:3000/', newInstrument);
@@ -72,9 +95,34 @@ async function createInstruments(id) {
 
     location.reload();
   } catch (error) {
-    console.error('Error: ', error);
-    alert('Erro ao criar instrumento. Por favor, tente novamente.');
+      console.error('Error: ', error);
+      alert('Erro ao criar instrumento. Por favor, tente novamente.');
   }
 }
+
+async function deleteInstrument(id) {
+
+  const confirmDelete = confirm('Você deseja excluir o instrumento?')
+
+  if (!confirmDelete) {
+    return
+  }
+
+  try {
+    
+    await axios.delete(`http://localhost:3000/${id}`)
+    
+    alert('Instrumento deletado com sucesso!')
+    
+    location.reload()
+
+  } catch (error) {
+    console.error('Error: ', error)
+    alert('Erro ao excluir instrumento. Por favor, tente novamente.')
+  }
+}
+  
+  
+
 
 window.onload = main;
