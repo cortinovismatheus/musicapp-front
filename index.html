@@ -15,7 +15,12 @@
                 <p> gerencie seu catálogo de instrumentos </p>
             </div>
             <div class="create-instruments"> 
-                <button onclick="showForm()"> Adicionar Instrumento </button>
+                <button onclick="showForm()">
+                    <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 5v14M5 12h14"/>
+                    </svg>
+                    Adicionar Instrumento
+                </button>
             </div>
         </div>
 
@@ -33,7 +38,12 @@
                 </select>
                 <input type="number" id="quantity_piece" placeholder="Peças">
                 <input type="number" id="price" placeholder="Preço">
-                <button onclick="createInstruments()">Criar Instrumento</button>
+                <button onclick="saveInstrument()">
+                    <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M5 12l5 5L20 7"/>
+                    </svg>
+                    Salvar Instrumento
+                </button>
             </div>
         </div>
 
@@ -81,7 +91,7 @@
             </table>
         </div>
         <div class="pagination">
-            <div class="total-instrumentos"> <p>Total: 5 instrumentos</p></div>
+            <div class="total-instrumentos"> <p>Total: 5 instrumentos</p> </div>
             <div class="pagination-buttons">
                 <button class="button-pagina-anterior"><</button>
                 <button class="button-pagina-1">1</button>
