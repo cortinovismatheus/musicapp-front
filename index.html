@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musicapp</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <div class="header">
             <div> <img src="assets/logo.png" alt="logo"> </div>
-            <div class="header-title"> 
+            <div class="header-title">
                 <h1> Musicapp </h1>
                 <p> gerencie seu catálogo de instrumentos </p>
             </div>
-            <div class="create-instruments"> 
+            <div class="create-instruments">
                 <button onclick="showForm()">
                     <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M12 5v14M5 12h14"/>
+                        <path d="M12 5v14M5 12h14" />
                     </svg>
                     Adicionar Instrumento
                 </button>
@@ -32,7 +34,7 @@
                 <select id="category">
                     <option value="">Selecione uma categoria</option>
                     <option value="cordas">Cordas</option>
-                    <option value="sopro">Sopro</option>
+                    <option value="sopro">Sopros</option>
                     <option value="percussao">Percussão</option>
                     <option value="teclas">Teclas</option>
                 </select>
@@ -40,7 +42,7 @@
                 <input type="number" id="price" placeholder="Preço">
                 <button onclick="saveInstrument()">
                     <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12l5 5L20 7"/>
+                        <path d="M5 12l5 5L20 7" />
                     </svg>
                     Salvar Instrumento
                 </button>
@@ -49,29 +51,20 @@
 
         <div class="filters">
             <div class="input-search">
-                <svg 
-                class="icone"
-                xmlns="http://www.w3.org/2000/svg"
-                width="20" 
-                height="20" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                stroke-width="2" 
-                stroke-linecap="round" 
-                stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <svg class="icone" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                <input type="text" id="buscar" placeholder="Buscar instrumento..." oninput="buscarInstrumentos()"> 
+                <input type="text" id="buscar" placeholder="Buscar instrumento...">
             </div>
-            <div class="filters-categories"> 
+            <div class="filters-categories">
                 <p class="filters-categories-title">Categorias:</p>
-                <div class="filters-categories-buttons"> 
-                    <button class="button-todos">Todos</button>
-                    <button class="button-cordas">Cordas</button>
-                    <button class="button-sopros">Sopros</button>
-                    <button class="button-percussão">Percussão</button>
+                <div class="filters-categories-buttons">
+                    <button class="category-button button-todos" onclick="filterCategory('')">Todos</button>
+                    <button class="category-button button-cordas" onclick="filterCategory('Cordas')">Cordas</button>
+                    <button class="category-button button-sopros" onclick="filterCategory('Sopro')">Sopro</button>
+                    <button class="category-button button-percurssão" onclick="filterCategory('Percussao')">Percussão</button>
                 </div>
             </div>
         </div>
@@ -91,13 +84,15 @@
             </table>
         </div>
         <div class="pagination">
-            <div class="total-instrumentos"> <p>Total: 5 instrumentos</p> </div>
+            <div class="total-instrumentos">
+                <p>Total: 5 instrumentos</p>
+            </div>
             <div class="pagination-buttons">
                 <button class="button-pagina-anterior"><</button>
-                <button class="button-pagina-1">1</button>
-                <button class="button-pagina-2">2</button>
-                <button class="button-pagina-3">3</button>
-                <button class="button-pagina-proxima">></button>
+                        <button class="button-pagina-1">1</button>
+                        <button class="button-pagina-2">2</button>
+                        <button class="button-pagina-3">3</button>
+                        <button class="button-pagina-proxima">></button>
             </div>
             <div class="itens-por-pagina">
                 <p class="itens-por-pagina-title">Itens por página: </p>
@@ -107,12 +102,13 @@
                     <option value="2">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option>
-                    
+
                 </select>
             </div>
-        </div> 
+        </div>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="index.js"></script>
+
 </html>

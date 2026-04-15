@@ -1,15 +1,15 @@
 let editingId = null
 let instruments = []
+let lastSearch = ""
+let selectedCategory = ''
 
-async function main() {
+async function main(name = "", category= "") {
   try {
-    const response = await axios.get('http://localhost:3000/');
+    const response = await axios.get(`http://localhost:3000/?name=${name}&category=${category}`);
 
     instruments = response.data;
 
     const table = document.getElementById('tabela-instrumentos');
-
-    console.log(instruments);
     
     table.innerHTML = "";
 
@@ -41,6 +41,28 @@ async function main() {
       table.innerHTML += row;
     });} catch (error) {
     console.error('Error: ', error);
+  }
+}
+
+function filterCategory(category) {
+
+  console.log("cliclou", category)
+
+  selectedCategory = category
+
+  const name = document.getElementById("buscar").value.trim()
+
+  main(name, selectedCategory)
+}
+
+async function searchInstruments() {
+  try {
+    const name = document.getElementById("buscar").value.trim()
+
+    main(name, selectedCategory)
+    
+  } catch (error) {
+    console.error("Erro na buscar:", error)
   }
 }
 
@@ -192,4 +214,15 @@ async function saveInstrument() {
 }
 
 
-window.onload = main;
+window.onload = () => {
+  main()
+
+  const input = document.getElementById("buscar")
+
+  input.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault()
+      searchInstruments()
+    }
+  })
+}
