@@ -84,7 +84,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 30px; 
+  margin-top: 10px; 
   gap: 30px;
 }
 
@@ -112,63 +112,150 @@ input{
   padding-left: 10px;
 }
 
-.input-search{
+.input-search {
   position: relative;
   width: 100%;
   max-width: 400px;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .input-search input {
   width: 100%;
-  padding: 12px 12px 12px 40px; /* espaço para a lupa */
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  height: 45px;
+  padding: 12px 16px 12px 42px;
+  border-radius: 12px;
+  border: 2px solid #e5e7eb;
   font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fafafa;
+  color: #1f2937;
+  transition: all 0.3s ease;
+}
+
+.input-search input::placeholder {
+  color: #d1d5db;
+}
+
+.input-search input:hover {
+  border-color: #d1d5db;
+  background-color: #f9fafb;
 }
 
 .input-search input:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
-  background-color: #fff;
+  outline: none;
+  border-color: #3b82f6;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), 0 4px 12px rgba(59, 130, 246, 0.2);
 }
 
 .input-search .icone {
   position: absolute;
-  left: 12px;
+  left: 14px;
   top: 50%;
   transform: translateY(-50%);
-  color: #9ca3af; /* cinza suave */
-  pointer-events: none; /* não bloqueia clique no input */
+  color: #9ca3af;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  width: 18px;
+  height: 18px;
+}
+
+.input-search input:focus ~ .icone {
+  color: #3b82f6;
+  transform: translateY(-50%) scale(1.1);
 }
   
-.filters button{
-  border-radius: 10px;
-  font-size: 15px;
-  padding: 5px;
-  -webkit-box-shadow: 3px 3px 5px 2px rgba(80, 80, 80, 0.3);
-  box-shadow: 3px 3px 5px 2px rgba(80, 80, 80, 0.3);
-  cursor:pointer
+.category-button {
+  border: 2px solid;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: capitalize;
 }
 
-.filters .button-todos{
-  background-color: rgba(0, 0, 255, 0.1);
-  border-color: #0000ff;
+.category-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-.filters .button-cordas{
+.category-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button-todos {
+  background-color: rgba(59, 130, 246, 0.1);
+  border-color: #3b82f6;
+  color: #1e40af;
+}
+
+.button-todos:hover {
+  background-color: rgba(59, 130, 246, 0.2);
+  border-color: #2563eb;
+}
+
+.button-todos.active {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  border-color: #2563eb;
+  color: white;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+}
+
+.button-cordas {
   background-color: rgba(255, 123, 0, 0.1);
+  border-color: #ff7b00;
+  color: #d97706;
+}
+
+.button-cordas:hover {
+  background-color: rgba(255, 123, 0, 0.2);
   border-color: #ff8800;
 }
 
-.filters .button-sopros{
-  background-color: rgba(70, 224, 70, 0.1);
-  border-color: #3fdf3f;
+.button-cordas.active {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  border-color: #d97706;
+  color: white;
+  box-shadow: 0 6px 16px rgba(245, 158, 11, 0.4);
 }
 
-.filters .button-percussão{
-  background-color: rgba(255, 0, 0, 0.1);
-  border-color: #ff0000;
+.button-sopros {
+  background-color: rgba(34, 197, 94, 0.1);
+  border-color: #22c55e;
+  color: #16a34a;
+}
+
+.button-sopros:hover {
+  background-color: rgba(34, 197, 94, 0.2);
+  border-color: #22c55e;
+}
+
+.button-sopros.active {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border-color: #16a34a;
+  color: white;
+  box-shadow: 0 6px 16px rgba(34, 197, 94, 0.4);
+}
+
+.button-percurssão {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-color: #ef4444;
+  color: #b91c1c;
+}
+
+.button-percurssão:hover {
+  background-color: rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+}
+
+.button-percurssão.active {
+  background: linear-gradient(135deg, #ef4444, #b91c1c);
+  border-color: #b91c1c;
+  color: white;
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
 }
 
 .lista-instrumentos {
