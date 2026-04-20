@@ -85,6 +85,7 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-top: 30px; 
+  gap: 30px;
 }
 
 .filters-categories {
@@ -115,6 +116,7 @@ input{
   position: relative;
   width: 100%;
   max-width: 400px;
+  transition: all 0.2s ease;
 }
 
 .input-search input {
@@ -123,6 +125,12 @@ input{
   border-radius: 8px;
   border: 1px solid #ddd;
   font-size: 14px;
+}
+
+.input-search input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  background-color: #fff;
 }
 
 .input-search .icone {
