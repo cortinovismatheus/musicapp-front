@@ -1,21 +1,48 @@
 let editingId = null
 let instruments = []
 let lastSearch = ""
-let selectedCategory = ''
+let selectedCategory = ""
+let currentPage = 1
+let limit = 2
 
-async function main(name = "", category= "") {
+async function main(name = "", category = "", page = 1) {
   try {
-    const response = await axios.get(`http://localhost:3000/?name=${name}&category=${category}`);
+    const response = await axios.get(`http://localhost:3000/?name=${name}&category=${category}&page=${page}&limit=${limit}`);
 
-    instruments = response.data;
+    const result = response.data
 
-    const table = document.getElementById('tabela-instrumentos');
-    
-    table.innerHTML = "";
+    instruments = result.data;
+    currentPage = result.page;
 
-    instruments.forEach(instrument => {
-      const row = 
-        `<tr>
+    renderTable()
+    renderPage(result)
+
+  } catch (error) {
+    console.error('Error: ', error);
+  }
+}
+
+function renderTable() {
+  const table = document.getElementById('tabela-instrumentos');
+
+  table.innerHTML = "";
+
+  if (instruments.length === 0) {
+    table.innerHTML = `
+      <tr>
+        <td colspan="5" class="not-found">
+          <div>📂</div>
+          Nenhum instrumento encontrado.
+        </td>
+      </tr>
+    `;
+    return;
+  }
+
+
+  instruments.forEach(instrument => {
+    const row =
+      `<tr>
           <td>${instrument.name}</td>
           <td>${instrument.category}</td>
           <td>${instrument.quantity_piece}</td>
@@ -37,30 +64,73 @@ async function main(name = "", category= "") {
             </button>
           </td>
         </tr>`;
-      
-      table.innerHTML += row;
-    });} catch (error) {
-    console.error('Error: ', error);
+
+    table.innerHTML += row;
+  });
+}
+
+function renderPage(result) {
+  const { page, totalPages, total } = result
+
+  const container = document.querySelector(".pagination-buttons")
+  const totalText = document.querySelector(".total-instrumentos p")
+
+  container.innerHTML = ""
+  totalText.textContent = `Total: ${total} instrumentos`
+
+
+  const prev = document.createElement("button")
+  prev.classList.add("button-pagina-anterior")
+  prev.textContent = "<"
+
+  if (page <= 1) {
+    prev.disabled = true // Desabilita o botão na página 1
+  } else {
+    prev.onclick = () => main(lastSearch, selectedCategory, page - 1)
   }
+  container.appendChild(prev)
+
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement("button")
+    btn.classList.add("button-pagina")
+    btn.textContent = i
+
+    if (i === page) {
+      btn.classList.add("ativo")
+    }
+
+    btn.onclick = () => main(lastSearch, selectedCategory, i)
+    container.appendChild(btn)
+  }
+
+  const next = document.createElement("button")
+  next.classList.add("button-pagina-proxima")
+  next.textContent = ">"
+
+  if (page >= totalPages) {
+    next.disabled = true // Desabilita o botão se chegar no total de páginas
+  } else {
+    next.onclick = () => main(lastSearch, selectedCategory, page + 1)
+  }
+  container.appendChild(next)
 }
 
 function filterCategory(category) {
-
-  console.log("cliclou", category)
-
   selectedCategory = category
 
   const name = document.getElementById("buscar").value.trim()
 
-  main(name, selectedCategory)
+  main(name, selectedCategory, 1)
 }
 
 async function searchInstruments() {
   try {
     const name = document.getElementById("buscar").value.trim()
 
-    main(name, selectedCategory)
-    
+    lastSearch = name
+
+    main(name, selectedCategory, 1)
+
   } catch (error) {
     console.error("Erro na buscar:", error)
   }
@@ -73,9 +143,15 @@ async function showForm() {
 
 async function closeForm() {
   document.getElementById('modal').style.display = 'none';
+
+  document.getElementById("name").value = ""
+  document.getElementById("category").value = ""
+  document.getElementById("quantity_pice").value = ""
+  document.getElementById("price").value = ""
+  editingId = null
 }
 
-window.addEventListener('click', function(event) { 
+window.addEventListener('click', function (event) {
   const modal = document.getElementById("modal");
 
   if (event.target === modal) {
@@ -83,7 +159,7 @@ window.addEventListener('click', function(event) {
   }
 });
 
-document.addEventListener("keydown", function(event) {
+document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
     const modal = document.getElementById("modal");
     modal.style.display = "none";
@@ -95,8 +171,8 @@ async function createInstruments(id) {
   const category = document.getElementById('category').value;
   const quantity_piece = document.getElementById('quantity_piece').value;
   const price = document.getElementById('price').value;
-  
-  
+
+
   const newInstrument = {
     name: name,
     category: category,
@@ -104,35 +180,35 @@ async function createInstruments(id) {
     price: price
   };
 
-  if(name == undefined || name.trim() == '' ){
+  if (name == undefined || name.trim() == '') {
     alert('Preencha o campo "nome"')
     return
   }
-  
-  if(category === ''){
+
+  if (category === '') {
     alert('Preencha o campo "categoria"')
     return
   }
 
-  if(quantity_piece === ''){
+  if (quantity_piece === '') {
     alert('Preencha o campo "Peças"')
     return
   }
 
-  if(price === ''){
+  if (price === '') {
     alert('Preencha o campo "preço"')
     return
   }
 
-  try{
+  try {
     await axios.post('http://localhost:3000/', newInstrument);
-    
+
     alert('Instrumento criado com sucesso!');
 
-    location.reload();
+    main(lastSearch, selectedCategory, currentPage)
   } catch (error) {
-      console.error('Error: ', error);
-      alert('Erro ao criar instrumento. Por favor, tente novamente.');
+    console.error('Error: ', error);
+    alert('Erro ao criar instrumento. Por favor, tente novamente.');
   }
 }
 
@@ -145,12 +221,12 @@ async function deleteInstrument(id) {
   }
 
   try {
-    
+
     await axios.delete(`http://localhost:3000/${id}`)
-    
+
     alert('Instrumento deletado com sucesso!')
-    
-    location.reload()
+
+    main(lastSearch, selectedCategory, currentPage)
 
   } catch (error) {
     console.error('Error: ', error)
@@ -160,11 +236,11 @@ async function deleteInstrument(id) {
 
 
 
- function editInstrument(id){
+function editInstrument(id) {
 
   editingId = id
-  
-  const instrument = instruments.find (item => item.id == id)
+
+  const instrument = instruments.find(item => item.id == id)
 
   document.getElementById("name").value = instrument.name
   document.getElementById("category").value = instrument.category
@@ -175,9 +251,9 @@ async function deleteInstrument(id) {
 
   showForm()
 }
-  
+
 async function updateInstrument(id) {
-  
+
   const name = document.getElementById("name").value;
   const category = document.getElementById("category").value;
   const quantity_piece = document.getElementById("quantity_piece").value;
@@ -185,8 +261,8 @@ async function updateInstrument(id) {
 
 
   try {
-    
-    await axios.put(`http://localhost:3000/${id}`,{
+
+    await axios.put(`http://localhost:3000/${id}`, {
       name,
       category,
       quantity_piece,
@@ -194,10 +270,10 @@ async function updateInstrument(id) {
     })
     alert("Instrumento atualizado com sucesso!")
 
-    location.reload()
+    main(lastSearch, selectedCategory, currentPage)
 
   } catch (error) {
-    
+
     console.error(error)
     alert("Erro ao atualizar o instrumento, tente novamente!")
 
@@ -211,6 +287,9 @@ async function saveInstrument() {
   } else {
     await createInstruments()
   }
+
+  editingId = null
+  closeForm()
 }
 
 
@@ -219,10 +298,17 @@ window.onload = () => {
 
   const input = document.getElementById("buscar")
 
-  input.addEventListener("keydown", function(event) {
+  input.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
       event.preventDefault()
       searchInstruments()
     }
   })
 }
+
+const selectLimit = document.querySelector("select[name='itens-por-paginas']")
+
+selectLimit.addEventListener("change", (e) => {
+  limit = Number(e.target.value)
+  main(lastSearch, selectedCategory, 1)
+})

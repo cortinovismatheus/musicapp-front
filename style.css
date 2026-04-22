@@ -84,7 +84,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 10px; 
+  margin-top: 10px;
   gap: 30px;
 }
 
@@ -105,7 +105,7 @@ body {
   gap: 10px;
 }
 
-input{
+input {
   height: 40px;
   width: 350px;
   border-radius: 5px;
@@ -160,11 +160,11 @@ input{
   height: 18px;
 }
 
-.input-search input:focus ~ .icone {
+.input-search input:focus~.icone {
   color: #3b82f6;
   transform: translateY(-50%) scale(1.1);
 }
-  
+
 .category-button {
   border: 2px solid;
   border-radius: 12px;
@@ -263,15 +263,15 @@ input{
   border: 2px solid #d1d5db;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-table{
+table {
   border-collapse: collapse;
   width: 100%;
 }
 
-table thead th{
+table thead th {
   background-color: #757373;
   color: #ffffff;
   padding: 5px 10px;
@@ -279,14 +279,14 @@ table thead th{
   text-align: left;
 }
 
-table tbody td{
+table tbody td {
   background-color: #f0f0f0;
-  padding: 5px 10px; 
+  padding: 5px 10px;
   letter-spacing: 1px;
   text-align: left;
 }
 
-.style-category span{
+.style-category span {
   border-width: 1px;
   border-style: solid;
   border-radius: 5px;
@@ -295,27 +295,28 @@ table tbody td{
   height: 30px;
 }
 
-.style-category .style-cordas{
+.style-category .style-cordas {
   background-color: rgba(255, 123, 0, 0.1);
   border-color: #ff8800;
 }
 
-.style-category .style-sopros{
+.style-category .style-sopros {
   background-color: rgba(70, 224, 70, 0.1);
   border-color: #3fdf3f;
 }
 
-.style-category .style-percussão{
+.style-category .style-percussão {
   background-color: rgba(255, 0, 0, 0.1);
   border-color: #ff0000;
 }
 
-table td, th{
+table td,
+th {
   border-bottom: 2px solid #e5e7eb;
   border-right: 2px solid #e5e7eb;
 }
 
-.actions{
+.actions {
   display: flex;
   flex-direction: row;
   gap: 5px;
@@ -328,7 +329,7 @@ table td, th{
   height: 40px;
   border-radius: 12px;
   cursor: pointer;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -401,7 +402,16 @@ table td, th{
   box-shadow: 0 2px 6px rgba(220, 38, 38, 0.3);
 }
 
+.not-found {
+  text-align: center;
+  padding: 40px;
+  color: #888;
+}
 
+.not-found div {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
 
 .pagination {
   margin-top: 20px;
@@ -410,7 +420,7 @@ table td, th{
   align-items: center;
 }
 
-.pagination .total-instrumentos{
+.pagination .total-instrumentos {
   font-size: 16px;
   font-weight: 500;
   color: #374151;
@@ -427,92 +437,108 @@ table td, th{
   font-weight: bold;
 }
 
-.pagination .button-pagina-anterior, .button-pagina-proxima{
-  border: 1.5px solid #000000;
-  padding: 5px 5px;
-  border-radius: 10px;
-  font-size: 20px;
+
+.pagination button {
   height: 35px;
-  width: 40px;
-  background-color: #ffffff;
+  min-width: 40px;
+  padding: 0 10px;
+  border-radius: 12px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  -webkit-tap-highlight-color: transparent;
 }
 
-.pagination .button-pagina-1{
-  border: 1.5px solid rgba(30, 104, 214, 1);
-  color: #ffffff;
-  padding: 5px 5px;
-  border-radius: 10px;
-  font-size: 20px;
-  height: 35px;
-  width: 40px;
-  background: #1e68d6;
-  background: linear-gradient(90deg,rgba(30, 104, 214, 1) 0%, rgba(160, 190, 235, 1) 100%);
+.button-pagina.ativo {
+  background: #3b82f6;
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
-.pagination .button-pagina-2{
-  border: 1.5px solid #000000;
-  padding: 5px 5px;
-  border-radius: 10px;
-  font-size: 20px;
-  height: 35px;
-  width: 40px;
-  background-color: #ffffff;
+.button-pagina-anterior,
+.button-pagina-proxima,
+.button-pagina {
+  background: #ffffff;
+  border: 1.5px solid #3b82f6;
+  color: #3b82f6;
 }
 
-.pagination .button-pagina-3{
-  border: 1.5px solid #000000;
-  padding: 5px 5px;
-  border-radius: 10px;
-  font-size: 20px;
-  height: 35px;
-  width: 40px;
-  background-color: #ffffff;
+.button-pagina-anterior:hover,
+.button-pagina-proxima:hover,
+.ativo:hover,
+.button-pagina:hover {
+  background: #3b82f6;
+  color: white;
+
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 18px rgba(59, 130, 246, 0.3);
 }
 
-.pagination .itens-por-pagina{
+.button-pagina-anterior:active,
+.button-pagina-proxima:active,
+.button-pagina:active,
+.ativo:active {
+  transform: scale(0.95);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #ccc;
+  /* Cor de exemplo para desabilitado */
+}
+
+.pagination .itens-por-pagina {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.pagination .itens-por-pagina-title{
+.pagination .itens-por-pagina-title {
   font-size: 16px;
   font-weight: 500;
   color: #374151;
 }
 
-.pagination select{
+.pagination select {
   height: 30px;
   width: 40px;
   padding: 5px 5px;
   border-radius: 10px;
 }
 
-.modal{
+.modal {
   position: fixed;
-  top:0;
-  left:0;
-  width: 100%; 
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 9;
-  display:none;
+  display: none;
   justify-content: center;
   align-items: center;
 }
 
-.modal-content{
+.modal-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #ffffff;
-  padding:50px;
-  gap:20px;
-  border-radius:20px;
+  padding: 50px;
+  gap: 20px;
+  border-radius: 20px;
 }
 
-.modal-content h2{
+.modal-content h2 {
   color: #0F52BA;
 }
 
@@ -534,16 +560,17 @@ table td, th{
   background-size: 12px;
 }
 
-.modal-content input{
+.modal-content input {
   height: 40px;
   width: 100%;
   padding: 5px 5px;
   border-radius: 10px;
   border: 1px solid #d1d5db;
-  padding:10px;
+  padding: 10px;
 }
 
-input:focus, select:focus {
+input:focus,
+select:focus {
   outline: none;
   border-color: #1e68d6;
   box-shadow: 0 0 5px rgba(30, 104, 214, 0.5);
@@ -595,7 +622,7 @@ input:focus, select:focus {
   transform: scale(1.2) rotate(5deg);
 }
 
-.close{
+.close {
   position: absolute;
   top: 20px;
   right: 20px;
